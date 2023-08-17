@@ -63,7 +63,7 @@ public class FilmValidationTest {
     }
 
     @Test
-    void NegativeDurationFilm() {
+    void negativeDurationFilm() {
         film.setDuration(-1);
         ValidationException negativeDuration = assertThrows(
                 ValidationException.class,
