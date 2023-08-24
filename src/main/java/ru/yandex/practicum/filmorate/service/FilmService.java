@@ -41,7 +41,7 @@ public class FilmService {
     }
 
     public List<Film> getPopular(Integer count) {
-        return getAllFilms().stream().sorted((f1 ,f2) -> f2.getLikes().size() - f1.getLikes().size())
+        return getAllFilms().stream().sorted((f1, f2) -> f2.getLikes().size() - f1.getLikes().size())
                 .limit(count).collect(Collectors.toList());
     }
 }
