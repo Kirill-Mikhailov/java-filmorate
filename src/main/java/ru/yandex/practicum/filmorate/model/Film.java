@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import ru.yandex.practicum.filmorate.annotation.CustomAfter;
 
@@ -8,6 +9,8 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.TreeSet;
 
 @Data
 @RequiredArgsConstructor
@@ -30,6 +33,9 @@ public class Film {
     @NonNull
     @Positive(message = "Продолжительность фильма должна быть положительной")
     private int duration;
+
+    @JsonIgnore
+    private final Set<Integer> likes = new TreeSet<>();
 
     @EqualsAndHashCode.Exclude
     private int id;
