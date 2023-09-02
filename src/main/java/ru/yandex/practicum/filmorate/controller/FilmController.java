@@ -9,7 +9,6 @@ import ru.yandex.practicum.filmorate.service.FilmService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
 
 @Slf4j
@@ -40,21 +39,21 @@ public class FilmController {
     }
 
     @GetMapping("/{id}")
-    public Film getFilmById(@Valid @PositiveOrZero @PathVariable Integer id) {
+    public Film getFilmById(@Valid @Positive @PathVariable Integer id) {
         log.info("Получение фильма по id: {}", id);
         return filmService.getFilmById(id);
     }
 
     @PutMapping("/{id}/like/{userId}")
-    public void addLike(@Valid @PositiveOrZero @PathVariable Integer id,
-                        @Valid @PositiveOrZero @PathVariable Integer userId) {
+    public void addLike(@Valid @Positive @PathVariable Integer id,
+                        @Valid @Positive @PathVariable Integer userId) {
         log.info("Добавление лайка фильму id: {} от пользователя userId: {}", id, userId);
         filmService.addLike(id, userId);
     }
 
     @DeleteMapping("/{id}/like/{userId}")
-    public void removeLike(@Valid @PositiveOrZero @PathVariable Integer id,
-                           @Valid @PositiveOrZero @PathVariable Integer userId) {
+    public void removeLike(@Valid @Positive @PathVariable Integer id,
+                           @Valid @Positive @PathVariable Integer userId) {
         log.info("Удаление лайка у фильма id: {} от пользователя userId: {}", id, userId);
         filmService.removeLike(id, userId);
     }
