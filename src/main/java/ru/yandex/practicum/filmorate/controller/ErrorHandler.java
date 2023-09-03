@@ -40,11 +40,11 @@ public class ErrorHandler {
         return new ErrorResponse(e.getMessage().substring(e.getMessage().indexOf(".") + 1));
     }
 
-   /* @ExceptionHandler
+    @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleThrowable(Throwable e) {
         return new ErrorResponse("Произошла непредвиденная ошибка.");
-    }*/
+    }
 
     @RequiredArgsConstructor
     static class ErrorResponse {

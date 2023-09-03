@@ -25,9 +25,6 @@ public class User {
     @Past(message = "Дата рождения не может быть в будущем")
     private LocalDate birthday;
 
-    //@JsonIgnore
-    //private final Set<Integer> friends = new TreeSet<>();
-
     @EqualsAndHashCode.Exclude
     private Integer id;
 

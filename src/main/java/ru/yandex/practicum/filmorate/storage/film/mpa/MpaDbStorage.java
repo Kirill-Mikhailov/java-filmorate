@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 public class MpaDbStorage implements MpaStorage {
 
-    JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public MpaDbStorage(JdbcTemplate jdbcTemplate) {

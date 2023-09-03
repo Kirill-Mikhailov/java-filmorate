@@ -22,9 +22,9 @@ import java.util.Map;
 @Component
 public class FilmDbStorage implements FilmStorage {
 
-    JdbcTemplate jdbcTemplate;
-    MpaStorage mpaDbStorage;
-    GenreStorage genreDbStorage;
+    private final JdbcTemplate jdbcTemplate;
+    private final MpaStorage mpaDbStorage;
+    private final GenreStorage genreDbStorage;
 
     @Autowired
     public FilmDbStorage(JdbcTemplate jdbcTemplate, MpaStorage mpaDbStorage, GenreStorage genreDbStorage) {

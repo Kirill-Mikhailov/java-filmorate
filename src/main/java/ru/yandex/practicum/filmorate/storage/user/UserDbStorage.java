@@ -19,7 +19,7 @@ import java.util.Map;
 @Component
 public class UserDbStorage implements UserStorage {
 
-    JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public UserDbStorage(JdbcTemplate jdbcTemplate) {
