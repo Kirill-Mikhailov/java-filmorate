@@ -6,53 +6,49 @@ import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserStorage inMemoryUserStorage;
+    private final UserStorage userDbStorage;
 
     public List<User> getAllUsers() {
-        return inMemoryUserStorage.getAll();
+        return userDbStorage.getAll();
     }
 
     public User addUser(User user) {
-        return inMemoryUserStorage.add(user);
+        return userDbStorage.add(user);
     }
 
     public User updateUser(User user) {
-        return inMemoryUserStorage.update(user);
+        return userDbStorage.update(user);
     }
 
     public User getUserById(Integer id) {
-        return  inMemoryUserStorage.getById(id);
+        return userDbStorage.getById(id);
     }
 
     public void addFriend(Integer id, Integer friendId) {
-        User user = getUserById(id);
-        User friend = getUserById(friendId);
-        user.getFriends().add(friendId);
-        friend.getFriends().add(id);
+        getUserById(id); // Для проверки на наличие пользователя с таким id
+        getUserById(friendId); // Для проверки на наличие пользователя с таким id
+        userDbStorage.addFriend(id, friendId);
     }
 
     public void removeFriend(Integer id, Integer friendId) {
-        User user = getUserById(id);
-        User friend = getUserById(friendId);
-        user.getFriends().remove(friendId);
-        friend.getFriends().remove(id);
+        getUserById(id); // Для проверки на наличие пользователя с таким id
+        getUserById(friendId); // Для проверки на наличие пользователя с таким id
+        userDbStorage.removeFriend(id, friendId);
     }
 
     public List<User> getFriends(Integer id) {
-        User user = getUserById(id);
-        return user.getFriends().stream().map(this::getUserById).collect(Collectors.toList());
+        getUserById(id); // Для проверки на наличие пользователя с таким id
+        return userDbStorage.getFriends(id);
     }
 
     public List<User> getCommonFriends(Integer id, Integer otherId) {
-        User user = getUserById(id);
-        User otherUser = getUserById(otherId);
-        return user.getFriends().stream().filter(otherUser.getFriends()::contains)
-                .map(this::getUserById).collect(Collectors.toList());
+        getUserById(id); // Для проверки на наличие пользователя с таким id
+        getUserById(otherId); // Для проверки на наличие пользователя с таким id
+        return userDbStorage.getCommonFriends(id, otherId);
     }
 }
