@@ -5,18 +5,25 @@ import ru.yandex.practicum.filmorate.model.Film;
 import java.util.List;
 
 public interface FilmStorage {
-
     List<Film> getAll();
-
-    Film update(Film film);
 
     Film add(Film film);
 
-    Film getById(Integer id);
+    Film update(Film film);
 
-    void addLike(Integer id, Integer userId);
+    Film getFilmById(int id);
 
-    void removeLike(Integer id, Integer userId);
+    List<Film> getMostPopular(int size);
 
-    List<Film> getPopular(Integer count);
+    List<Film> search(String query, String by);
+
+    void delete(int id);
+
+    List<Film> getCommonFilms(int userId, int friendId);
+
+    List<Film> getDirectorsFilms(int directorId, String sortBy);
+
+    List<Film> getRecommendations(int userId);
+
+    List<Film> getPopularsGenreAndYear(int limit, int genreId, int year);
 }

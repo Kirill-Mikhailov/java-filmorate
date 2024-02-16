@@ -1,2 +1,6 @@
-# java-filmorate
-Template repository for Filmorate project.
+# Filmorate
+Filmorate - это сервис, работающий с фильмами и оценками пользователей. С Filmorate ни вам, ни вашим друзьям не придётся долго размышлять, что посмотреть вечером. В этом репозитории представлена backend-часть сервиса.
+
+## Схема базы данных сервиса
+
+![db_diagram](filmorate_db_scheme.png)

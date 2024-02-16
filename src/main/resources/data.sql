@@ -1,12 +1,14 @@
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Комедия');
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Драма');
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Мультфильм');
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Триллер');
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Документальный');
-INSERT INTO GENRE (GENRE_NAME) VALUES ('Боевик');
+MERGE INTO mpa_rating (name) KEY (name)
+VALUES ('G'),
+       ('PG'),
+       ('PG-13'),
+       ('R'),
+       ('NC-17');
 
-INSERT INTO MPA (MPA_RATING) VALUES ('G');
-INSERT INTO MPA (MPA_RATING) VALUES ('PG');
-INSERT INTO MPA (MPA_RATING) VALUES ('PG-13');
-INSERT INTO MPA (MPA_RATING) VALUES ('R');
-INSERT INTO MPA (MPA_RATING) VALUES ('NC-17');
+MERGE INTO genres (name) KEY (name)
+VALUES ('Комедия'),
+       ('Драма'),
+       ('Мультфильм'),
+       ('Триллер'),
+       ('Документальный'),
+       ('Боевик');
